@@ -3,6 +3,7 @@ package personnages;
 import villagegaulois.Village;
 
 public class Chef extends Gaulois {
+	
 	private Village village;
 
 	public Chef(String nom, int force, Village village) {
