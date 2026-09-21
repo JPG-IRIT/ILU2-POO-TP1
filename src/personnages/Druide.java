@@ -3,6 +3,7 @@ package personnages;
 import java.util.Random;
 
 public class Druide extends Gaulois {
+	
 	private int effetPotionMin;
 	private int effetPotionMax;
 	private int forcePotion = 1;
