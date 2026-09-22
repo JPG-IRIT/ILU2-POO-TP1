@@ -1,6 +1,7 @@
 package personnages;
 
 public class Gaulois extends Personnage {
+	
 	private int effetPotion = 1;
 
 	public Gaulois(String nom, int force) {
