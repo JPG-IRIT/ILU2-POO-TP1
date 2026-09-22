@@ -1,0 +1,67 @@
+package histoire;
+
+import exceptions.VillageSansChefException;
+import personnages.Chef;
+import personnages.Druide;
+import personnages.Gaulois;
+import villagegaulois.Etal;
+import villagegaulois.Village;
+
+public class ScenarioExceptions {
+
+	public static void main(String[] args) {
+		System.out.println("BEGIN TP 1 \n");
+		
+//		TP 1 : décommenter les 3 lignes suivantes
+		Village village = new Village("le village des irréductibles", 10, 5);
+		Chef abraracourcix = new Chef("Abraracourcix", 10, village);
+		village.setChef(abraracourcix);
+		
+		Druide druide = new Druide("Panoramix", 2, 5, 10);
+		Gaulois obelix = new Gaulois("Obélix", 25);
+		Gaulois asterix = new Gaulois("Astérix", 8);
+		Gaulois assurancetourix = new Gaulois("Assurancetourix", 2);
+		Gaulois bonemine = new Gaulois("Bonemine", 7);
+		
+//		TP 1 : décommenter les lignes suivantes 
+		
+		village.ajouterHabitant(bonemine);
+		village.ajouterHabitant(assurancetourix);
+		village.ajouterHabitant(asterix);
+		village.ajouterHabitant(obelix);
+		village.ajouterHabitant(druide);
+		village.ajouterHabitant(abraracourcix);
+		try {
+			System.out.println(village.afficherVillageois()); // manque le syso
+		} catch (VillageSansChefException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(village.rechercherVendeursProduit("fleurs"));
+		System.out.println(village.installerVendeur(bonemine, "fleurs", 20));
+		System.out.println(village.rechercherVendeursProduit("fleurs"));
+		System.out.println(village.installerVendeur(assurancetourix, "lyres", 5));
+		System.out.println(village.installerVendeur(obelix, "menhirs", 2));
+		System.out.println(village.installerVendeur(druide, "fleurs", 10));
+
+		System.out.println(village.rechercherVendeursProduit("fleurs"));
+		Etal etalFleur = village.rechercherEtal(bonemine);
+		
+//		EQ2
+		try {
+			System.out.println(etalFleur.acheterProduit(10, abraracourcix));
+			System.out.println(etalFleur.acheterProduit(15, obelix));
+			System.out.println(etalFleur.acheterProduit(15, assurancetourix));
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(village.partirVendeur(bonemine));
+		System.out.println(village.afficherMarche());
+		
+		System.out.println("\nEND TP 1 \n");
+	}
+
+}
